@@ -1,0 +1,46 @@
+<div class="row my-3">
+    <div class="col-md-6">
+        <h1> List of client </h1>
+    </div>
+    <div class="col-md-4 text-right">
+        <h4><span  class=" badge-info">Total :{{ total | currency }}</span></h4>
+
+    </div>
+    <div class="col-md-2 text-right">
+        <a routerLink="/client/add" class="btn btn-sm btn-success">
+          <i class="fa fa-plus"></i>  New client
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+       
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fullname</th>
+                    <th>Infos</th>
+                    <th>Balance</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of clients">
+                    <td>{{ client.firstName }} {{ client.lastName }}</td>
+                    <td>Phone {{ client.phone }} - Email {{ client.email }}</td>
+                    <td>{{ client.balance |  currency:"USD":"symbol" }}</td>
+                    <td class="text-right">
+                        <a [routerLink]="['/clients', client.id, 'edit']" class="btn btn-warning mr-1 btn-sm">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <button routerLink="client/{{client.id}}" class="btn btn-sm btn-success">
+                            <i class="fa fa-info-circle"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<br><br>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-subtitle"><strong>{{client.firstName}} {{client.lastName}}</strong> </h4>
+        <div class="row">
+            <div class="col-md-8" >
+                <ul class="list-group">
+                    <li class="list-group-item">ID : <strong>{{client.id}}</strong></li>
+                    <li class="list-group-item">Phone : <strong>{{client.phone}}</strong></li>
+                    <li class="list-group-item">Email : <strong>{{client.email}}</strong></li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-right">
+            <span class="h5">Balance  :</span> 
+            <button class="btn btn-success" (click)="showBalnace=!showBalnace">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <h4 [ngClass]="{'text-danger' :showBalnace ,'text-success': !showBalnace }">{{client.balance | currency:"USD":"symbol"}}</h4>
+          <div *ngIf="showBalnace">
+            <form action="">
+                <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="client.balance" name="balance"> 
+                <div class="btn-group">
+                    <button (click)="updateBalance()" class="btn btn-warning">update</button>
+                    
+                </div>
+              
+                </div>
+            </form>
+        </div>
+            </div>
+
+        </div>
+    </div>
+</div>
